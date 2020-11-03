@@ -65,6 +65,10 @@ public class RegExpTest {
 		String testline3 = "FNDEVee32ijqkwherweh\t0004989125001415\tTest kommentar";
 		String testline4 = "\t0004989125001415\tTest kommentar";
 		String testline5 = "\t\tTest kommentar";
+		
+		String testline6 = "FNDEVee32ijqkwherweh\t0004989125001415\tTest kommentar";
+		String testline7 = "\t0004989125001415\tTest kommentar";
+		String testline8 = "\t\tTest kommentar";
 		try {
 			assertEquals("Testkommentar", getCommentFromRegex(testline0));
 			assertEquals("Testkommentar", getCommentFromRegex(testline1));
@@ -131,5 +135,60 @@ public class RegExpTest {
 		}
 
 	}
+	
+	@Test
+	public void test_numberOfSmiles() throws Exception {
+		
+		String str = ":())):::(:(:):)(:(:)";
+		String patternHappy1 = "\\(:";
+		String patternHappy2 = ":\\)";
+		String patternSad1 = ":\\(";
+		String patternSad2 = "\\):";
+		
+		Pattern sad1 = Pattern.compile(patternSad1);		
+		Matcher numberOfSad = sad1.matcher(str);
+		
+		
+		Pattern happy1 = Pattern.compile(patternHappy1);		
+		Matcher numberOfHappy = happy1.matcher(str);
+		
+		
+		Pattern sad2 = Pattern.compile(patternSad2);		
+		Matcher numberOfSad2 = sad2.matcher(str);
+		
+		
+		Pattern happy2 = Pattern.compile(patternHappy2);		
+		Matcher numberOfHappy2 = happy2.matcher(str);
+		
+		int count = 0;
+		while (numberOfSad.find()) {
+		    count++;
+		}
+		
+		
+		while (numberOfHappy.find()) {
+		    count++;
+		}
+
+		while (numberOfSad2.find()) {
+		    count++;
+		}
+		
+		
+		while (numberOfHappy2.find()) {
+		    count++;
+		}
+		
+		
+			System.out.println(count);
+
+		
+
+	}
+	
+	
+	
+	
+	
 
 }
