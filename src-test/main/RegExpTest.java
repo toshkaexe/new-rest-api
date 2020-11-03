@@ -160,27 +160,29 @@ public class RegExpTest {
 		Pattern happy2 = Pattern.compile(patternHappy2);		
 		Matcher numberOfHappy2 = happy2.matcher(str);
 		
-		int count = 0;
+		int countSad = 0;
+		int countHappy = 0;
 		while (numberOfSad.find()) {
-		    count++;
+			countSad++;
 		}
 		
 		
 		while (numberOfHappy.find()) {
-		    count++;
+			countHappy++;
 		}
 
 		while (numberOfSad2.find()) {
-		    count++;
+		    countSad++;
 		}
 		
 		
 		while (numberOfHappy2.find()) {
-		    count++;
+			countHappy++;
 		}
 		
 		
-			System.out.println(count);
+			System.out.println(String.format("Number of sad smile in the str %d", countSad));
+			System.out.println(String.format("Number of happy smile in the str is %d", countHappy));
 
 		
 
